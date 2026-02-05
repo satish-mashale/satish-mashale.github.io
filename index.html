@@ -1,22 +1,620 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Satish Mashale</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 50px;
-    }
-    h1 { color: #24292f; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Satish Mashale | QA Software Engineer & SDET Lead</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            /* Fancy Dark Theme Palette */
+            --bg-dark: #0f172a;       /* Deep slate/navy */
+            --bg-card: #1e293b;       /* Lighter slate for cards */
+            --primary: #38bdf8;       /* Bright Sky Blue (Fancy) */
+            --secondary: #94a3b8;     /* Muted blue-grey text */
+            --highlight: #f472b6;     /* Pink accent for "pop" */
+            --text-main: #e2e8f0;     /* White-ish text */
+            --gradient-1: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
+            --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+            --transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- Header / Hero Section --- */
+        header {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 10%;
+            position: relative;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 1200px;
+            gap: 50px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .header-text {
+            flex: 1;
+        }
+
+        .header-image-container {
+            flex: 0 0 350px; /* Fixed width for image container */
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .header-image-container img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%; /* Circle */
+            object-fit: cover;
+            border: 4px solid var(--primary);
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.4); /* Glowing effect */
+            position: relative;
+            z-index: 2;
+            transition: var(--transition);
+        }
+
+        .header-image-container img:hover {
+            transform: scale(1.05) rotate(3deg);
+            box-shadow: 0 0 50px rgba(56, 189, 248, 0.6);
+        }
+
+        /* Decorative circle behind image */
+        .header-image-container::before {
+            content: '';
+            position: absolute;
+            width: 310px;
+            height: 310px;
+            border-radius: 50%;
+            border: 2px dashed var(--highlight);
+            top: -5px;
+            right: 15px; /* Offset slightly */
+            z-index: 1;
+            animation: spin 30s linear infinite;
+        }
+
+        .hello {
+            color: var(--primary);
+            font-family: monospace;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        h1 {
+            font-size: 4.5rem;
+            background: -webkit-linear-gradient(45deg, #e2e8f0, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            font-weight: 800;
+            letter-spacing: -2px;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .bio {
+            max-width: 540px;
+            font-size: 1.1rem;
+            color: var(--secondary);
+            margin-bottom: 50px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 15px 35px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: rgba(56, 189, 248, 0.1);
+            box-shadow: 0 5px 15px rgba(56, 189, 248, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* --- Sections General --- */
+        section {
+            padding: 100px 10%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 60px;
+            font-size: 2rem;
+            color: var(--text-main);
+            font-weight: 700;
+        }
+
+        .section-title span {
+            color: var(--primary);
+            font-family: monospace;
+            margin-right: 10px;
+            font-size: 1.5rem;
+            font-weight: 400;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 300px;
+            height: 1px;
+            background-color: #334155;
+            margin-left: 20px;
+        }
+
+        /* --- About Section --- */
+        .about-content {
+            display: grid;
+            grid-template-columns: 3fr 2fr;
+            gap: 50px;
+        }
+
+        .skills-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+            font-family: monospace;
+            font-size: 0.95rem;
+        }
+
+        .skill-item {
+            display: flex;
+            align-items: center;
+            color: var(--secondary);
+        }
+
+        .skill-item::before {
+            content: "▹";
+            color: var(--primary);
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        /* Stats */
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 8px;
+            margin-top: 40px;
+            border: 1px solid #334155;
+        }
+
+        .stat-item h3 {
+            color: var(--primary);
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .stat-item p {
+            color: var(--secondary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- Projects Grid --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background-color: var(--bg-card);
+            padding: 2rem;
+            border-radius: 8px;
+            transition: var(--transition);
+            position: relative;
+            top: 0;
+            border: 1px solid transparent;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-7px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .folder-icon {
+            color: var(--primary);
+            font-size: 40px;
+        }
+
+        .external-icon {
+            color: var(--secondary);
+            font-size: 22px;
+        }
+
+        .external-icon:hover {
+            color: var(--primary);
+        }
+
+        .project-title {
+            color: var(--text-main);
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .project-desc {
+            font-size: 1rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            flex-grow: 1; /* Pushes tech stack to bottom */
+        }
+
+        .project-tech {
+            font-family: monospace;
+            font-size: 0.8rem;
+            color: var(--text-main);
+            opacity: 0.6;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        /* --- Contact --- */
+        .contact {
+            text-align: center;
+            max-width: 600px;
+            padding-bottom: 100px;
+        }
+
+        .social-links {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .social-links a {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            font-family: monospace;
+            font-size: 0.8rem;
+            color: var(--secondary);
+            background-color: #020617;
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 900px) {
+            .header-content {
+                flex-direction: column-reverse;
+                text-align: center;
+                justify-content: center;
+            }
+            
+            .header-image-container {
+                margin-bottom: 10px;
+            }
+            
+            .bio { margin: 0 auto 40px auto; }
+            
+            h1 { font-size: 3.5rem; }
+            
+            .about-content { grid-template-columns: 1fr; }
+        }
+        
+        @media (max-width: 480px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 1.8rem; }
+            section { padding: 60px 5%; }
+            .header-image-container img { width: 220px; height: 220px; }
+            .header-image-container::before { width: 230px; height: 230px; top: -5px; right: auto; }
+        }
+    </style>
 </head>
 <body>
-  <h1>Hi, I'm Satish 👋</h1>
-  <p>Software Engineer | GitHub Pages</p>
-  <p>
-    <a href="https://github.com/satish-mashale">GitHub Profile</a>
-  </p>
+
+    <!-- Hero Section -->
+    <header>
+        <div class="header-content">
+            <div class="header-text">
+                <p class="hello">👋 Hello, my name is</p>
+                <h1>Satish Mashale.</h1>
+                <h2>I build robust automation frameworks.</h2>
+                <p class="bio">
+                    I'm a seasoned QA Software Engineer with <strong>12+ years</strong> of experience.
+                    I specialize in Python, pytest, and Robot Framework to solve complex challenges in software testing.
+                    Currently Lead SDET at <span style="color:var(--primary)">Amagi</span>.
+                </p>
+                <div>
+                    <a href="https://github.com/satish-mashale" target="_blank" class="btn">View My Work</a>
+                </div>
+            </div>
+            
+            <!-- Profile Image Container -->
+            <div class="header-image-container">
+                <img src="profile.jpeg" alt="Satish Mashale">
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about">
+        <h3 class="section-title"><span>01.</span>About Me</h3>
+        <div class="about-content">
+            <div>
+                <p style="color: var(--secondary); margin-bottom: 15px;">
+                    My passion lies in crafting robust automation frameworks and solving complex challenges. 
+                    I've successfully executed intricate projects, including implementing <strong>ads.txt/app-ads.txt</strong> at 
+                    Pubmatic and conducting HLS stream validation.
+                </p>
+                <p style="color: var(--secondary); margin-bottom: 25px;">
+                    In my current role as a <strong>LEAD SDET</strong>, I manage various UI and API automation projects.
+                    I recently contributed to a remarkable <strong style="color: var(--primary)">43% reduction</strong> in automation execution times.
+                </p>
+
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <h3>12+</h3>
+                        <p>Years Experience</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>43%</h3>
+                        <p>Efficiency Gain</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>10+</h3>
+                        <p>Major Projects</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 20px; color: var(--text-main);">Technical Skills & Tools</h4>
+                <ul class="skills-list">
+                    <li class="skill-item">Python</li>
+                    <li class="skill-item">Robot Framework</li>
+                    <li class="skill-item">pytest</li>
+                    <li class="skill-item">Selenium / Playwright</li>
+                    <li class="skill-item">Kubernetes & Docker</li>
+                    <li class="skill-item">Cypress</li>
+                    <li class="skill-item">Report Portal</li>
+                    <li class="skill-item">Appium (Android)</li>
+                    <li class="skill-item">AdTech / Audio-Video</li>
+                    <li class="skill-item">CI/CD Jenkins</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h3 class="section-title"><span>02.</span>Key Projects & POCs</h3>
+        <div class="projects-grid">
+
+            <div class="project-card">
+                <div class="card-header">
+                    <div class="folder-icon"><i class="fa-regular fa-folder"></i></div>
+                    <a href="https://github.com/satish-mashale" target="_blank" class="external-icon"><i class="fa-brands fa-github"></i></a>
+                </div>
+                <h4 class="project-title">VideoHelper</h4>
+                <div class="project-desc">
+                    <p>Python-based tool created for generating ad assets, specifically designed for negative testing scenarios.</p>
+                </div>
+                <div class="project-tech">
+                    <span>Python</span>
+                    <span>AdTech</span>
+                    <span>Asset Gen</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="card-header">
+                    <div class="folder-icon"><i class="fa-brands fa-docker"></i></div>
+                    <a href="https://github.com/satish-mashale" target="_blank" class="external-icon"><i class="fa-brands fa-github"></i></a>
+                </div>
+                <h4 class="project-title">mysql-docker</h4>
+                <div class="project-desc">
+                    <p>Dockerized MySQL for QA setups, enabling real-world data testing and automation with periodic data refresh.</p>
+                </div>
+                <div class="project-tech">
+                    <span>Docker</span>
+                    <span>MySQL</span>
+                    <span>Automation</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="card-header">
+                    <div class="folder-icon"><i class="fa-solid fa-network-wired"></i></div>
+                    <a href="https://github.com/satish-mashale" target="_blank" class="external-icon"><i class="fa-brands fa-github"></i></a>
+                </div>
+                <h4 class="project-title">UnifiedAPIFramework</h4>
+                <div class="project-desc">
+                    <p>Generic API automation framework widely employed at Pubmatic.</p>
+                </div>
+                <div class="project-tech">
+                    <span>Python</span>
+                    <span>API Testing</span>
+                    <span>Framework</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="card-header">
+                    <div class="folder-icon"><i class="fa-solid fa-play"></i></div>
+                    <a href="https://github.com/satish-mashale" target="_blank" class="external-icon"><i class="fa-brands fa-github"></i></a>
+                </div>
+                <h4 class="project-title">stream-validator</h4>
+                <div class="project-desc">
+                    <p>Automation tool for video playout, capable of automatically identifying and raising playback issues.</p>
+                </div>
+                <div class="project-tech">
+                    <span>HLS</span>
+                    <span>Video Streaming</span>
+                    <span>Validation</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="card-header">
+                    <div class="folder-icon"><i class="fa-solid fa-eye"></i></div>
+                    <a href="https://github.com/satish-mashale" target="_blank" class="external-icon"><i class="fa-brands fa-github"></i></a>
+                </div>
+                <h4 class="project-title">ScreenAutomation</h4>
+                <div class="project-desc">
+                    <p>Image-based automation tool for UI scenarios where the traditional DOM structure is not exposed.</p>
+                </div>
+                <div class="project-tech">
+                    <span>OpenCV</span>
+                    <span>UI Automation</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="card-header">
+                    <div class="folder-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <a href="https://github.com/satish-mashale" target="_blank" class="external-icon"><i class="fa-brands fa-github"></i></a>
+                </div>
+                <h4 class="project-title">SecurityBot</h4>
+                <div class="project-desc">
+                    <p>Automated security tool for API testing, identifying security issues, and generating automated reports.</p>
+                </div>
+                <div class="project-tech">
+                    <span>Security</span>
+                    <span>OWASP</span>
+                    <span>Reporting</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="card-header">
+                    <div class="folder-icon"><i class="fa-brands fa-android"></i></div>
+                    <a href="https://github.com/satish-mashale" target="_blank" class="external-icon"><i class="fa-brands fa-github"></i></a>
+                </div>
+                <h4 class="project-title">AndroidAppAutomation</h4>
+                <div class="project-desc">
+                    <p>Automation of Android applications using Robot Framework and Appium.</p>
+                </div>
+                <div class="project-tech">
+                    <span>Robot Framework</span>
+                    <span>Appium</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="card-header">
+                    <div class="folder-icon"><i class="fa-solid fa-ghost"></i></div>
+                    <a href="https://github.com/satish-mashale" target="_blank" class="external-icon"><i class="fa-brands fa-github"></i></a>
+                </div>
+                <h4 class="project-title">http-spoofer</h4>
+                <div class="project-desc">
+                    <p>API data mocking service for negative testing scenarios, simulating domain redirect status.</p>
+                </div>
+                <div class="project-tech">
+                    <span>Python</span>
+                    <span>Mocking</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h3 class="section-title" style="justify-content: center; margin-left: 0;"><span>03.</span>What's Next?</h3>
+        <h1 style="font-size: 3rem;">Get In Touch</h1>
+        <p style="margin: 20px 0; font-size: 1.1rem; color: var(--secondary);">
+            I'm currently eager to connect with like-minded professionals, share experiences, and explore new opportunities. 
+            Whether you have a question or just want to say hi, I'll try my best to get back to you!
+        </p>
+        <a href="mailto:satish.mashale@example.com" class="btn">Say Hello</a>
+
+        <div class="social-links">
+            <a href="https://github.com/satish-mashale" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="https://linkedin.com" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="#" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+        </div>
+    </section>
+
+    <footer>
+        <p>Designed & Built by Satish Mashale</p>
+    </footer>
+
 </body>
 </html>
