@@ -101,7 +101,7 @@
             top: -5px;
             right: 15px; /* Offset slightly */
             z-index: 1;
-            animation: spin 30s linear infinite;
+            /* animation: spin 30s linear infinite; */
         }
 
         .hello {
@@ -133,7 +133,7 @@
             max-width: 540px;
             font-size: 1.1rem;
             color: var(--secondary);
-            margin-bottom: 50px;
+            margin-bottom: 30px;
         }
 
         .btn {
@@ -154,6 +154,26 @@
             background-color: rgba(56, 189, 248, 0.1);
             box-shadow: 0 5px 15px rgba(56, 189, 248, 0.2);
             transform: translateY(-2px);
+        }
+
+        .btn-fancy {
+            background: var(--gradient-1);
+            border: none;
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4);
+        }
+
+        .btn-fancy:hover {
+            background: linear-gradient(135deg, #2563eb 0%, #0ea5e9 100%);
+            box-shadow: 0 8px 25px rgba(14, 165, 233, 0.6);
+            transform: translateY(-2px);
+            color: #fff;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
         }
 
         /* --- Sections General --- */
@@ -317,9 +337,13 @@
 
         /* --- Contact --- */
         .contact {
+            padding-bottom: 100px;
+        }
+
+        .contact-content {
             text-align: center;
             max-width: 600px;
-            padding-bottom: 100px;
+            margin: 0 auto;
         }
 
         .social-links {
@@ -378,6 +402,85 @@
             
             .about-content { grid-template-columns: 1fr; }
         }
+
+        /* --- Experience Section --- */
+        .experience-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .job-card {
+            background-color: var(--bg-card);
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 4px solid var(--primary);
+            transition: var(--transition);
+        }
+
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 5px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .company-name {
+            font-size: 1.4rem;
+            color: var(--text-main);
+            font-weight: 700;
+        }
+
+        .role-title {
+            color: var(--primary);
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .job-meta {
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .job-meta span i {
+            margin-right: 5px;
+        }
+
+        .achievements-list {
+            list-style: none;
+        }
+
+        .achievements-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 10px;
+            color: var(--secondary);
+            font-size: 0.95rem;
+        }
+
+        .achievements-list li::before {
+            content: "▹";
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+        }
+
+        .achievements-list strong {
+            color: var(--text-main);
+        }
         
         @media (max-width: 480px) {
             h1 { font-size: 2.5rem; }
@@ -400,9 +503,10 @@
                 <p class="bio">
                     I'm a seasoned QA Software Engineer with <strong>12+ years</strong> of experience.
                     I specialize in Python, pytest, and Robot Framework to solve complex challenges in software testing.
-                    Currently Lead SDET at <span style="color:var(--primary)">Amagi</span>.
+                    Currently Senior Software Engineer at <span style="color:var(--primary)">Roku</span>.
                 </p>
-                <div>
+                <div class="cta-group">
+                    <a href="Resume_Satish_mashale.pdf" download class="btn btn-fancy"><i class="fa-solid fa-file-arrow-down" style="padding-right: 8px;"></i>Download Resume</a>
                     <a href="https://github.com/satish-mashale" target="_blank" class="btn">View My Work</a>
                 </div>
             </div>
@@ -425,7 +529,7 @@
                     Pubmatic and conducting HLS stream validation.
                 </p>
                 <p style="color: var(--secondary); margin-bottom: 25px;">
-                    In my current role as a <strong>LEAD SDET</strong>, I manage various UI and API automation projects.
+                    In my current role as a <strong>Senior Software Engineer</strong>, I manage various UI and API automation projects.
                     I recently contributed to a remarkable <strong style="color: var(--primary)">43% reduction</strong> in automation execution times.
                 </p>
 
@@ -462,9 +566,106 @@
         </div>
     </section>
 
+    <!-- Experience Section -->
+    <section id="experience">
+        <h3 class="section-title"><span>02.</span>Experience</h3>
+        <div class="experience-container">
+            
+            <!-- Roku -->
+            <div class="job-card">
+                <div class="job-header">
+                    <div class="company-name">Roku</div>
+                </div>
+                <div class="role-title">Senior Software Engineer</div>
+                <div class="job-meta">
+                    <span><i class="fa-regular fa-calendar"></i> Oct 2025 - Present</span>
+                    <span><i class="fa-solid fa-location-dot"></i> Bengaluru, India</span>
+                </div>
+            </div>
+
+            <!-- Amagi -->
+            <div class="job-card">
+                <div class="job-header">
+                    <div class="company-name">Amagi Corporation</div>
+                </div>
+                <div class="role-title">Lead SDET</div>
+                <div class="job-meta">
+                    <span><i class="fa-regular fa-calendar"></i> Mar 2023 - Oct 2025</span>
+                    <span><i class="fa-solid fa-location-dot"></i> Bengaluru, India</span>
+                </div>
+                <ul class="achievements-list">
+                    <li><strong>Automation Optimization:</strong> Led UI and API automation projects, achieving a 43% reduction in automation execution times through strategic framework optimization.</li>
+                    <li><strong>Stream Validation Tooling:</strong> Designed and implemented an automated stream health validation tool for HLS and DASH streams across major CTV platforms (Roku, Samsung, LG, Android TV), automating real-time monitoring and issue detection.</li>
+                    <li><strong>Infrastructure Automation (Terraform/Go):</strong> Updated existing Go libraries to integrate AWS services (SQS, DynamoDB) and automated the end-to-end cloud cluster creation using Terraform.</li>
+                    <li><strong>Ad-Tech QA Management:</strong> Managed QA for complex streaming ad projects, including MIDROLL, PREROLL, PIP, Overlay, and L-band ads.</li>
+                </ul>
+            </div>
+
+            <!-- PubMatic -->
+            <div class="job-card">
+                <div class="job-header">
+                    <div class="company-name">PubMatic</div>
+                </div>
+                
+                <!-- Role 1 -->
+                <div class="role-title">Principal Software QA Automation Engineer</div>
+                <div class="job-meta">
+                    <span><i class="fa-regular fa-calendar"></i> Jul 2021 - Mar 2023</span>
+                    <span><i class="fa-solid fa-location-dot"></i> Pune, India</span>
+                </div>
+                <ul class="achievements-list" style="margin-bottom: 25px;">
+                    <li><strong>API Framework Architecture:</strong> Architected and deployed the UnifiedAPIFramework, a generic and versatile API automation framework widely used across the organization.</li>
+                    <li><strong>Ads.txt/App-Ads.txt Implementation:</strong> Spearheaded the automation and QA for ads.txt and app-ads.txt compliance, creating a custom mock server for simulating complex fraud prevention scenarios.</li>
+                </ul>
+
+                <!-- Role 2 -->
+                <div class="role-title">Senior Software QA Automation Engineer</div>
+                <div class="job-meta">
+                    <span><i class="fa-regular fa-calendar"></i> Mar 2019 - Mar 2023</span>
+                </div>
+                <ul class="achievements-list" style="margin-bottom: 25px;">
+                    <li><strong>Negative Testing & Mocking:</strong> Developed an HTTP-Spoofer (Flask-based) for API data mocking, simulating negative testing and domain redirect statuses during ads.txt access.</li>
+                    <li><strong>CI/CD Integration:</strong> Established Continuous Integration (CI) practices with Jenkins and designed multiple end-to-end automation test environments from scratch.</li>
+                    <li><strong>Security Automation:</strong> Created SecurityBot, an automated API testing tool for identifying vulnerabilities and generating detailed security reports.</li>
+                    <li><strong>UI/Data Tooling:</strong> Developed an image-based automation tool (ScreenAutomation) for testing non-DOM UI scenarios and implemented Dockerized MySQL environments (MySQL-docker) for realistic data testing.</li>
+                </ul>
+
+                <!-- Role 3 -->
+                <div class="role-title">Software Engineer</div>
+                <div class="job-meta">
+                    <span><i class="fa-regular fa-calendar"></i> Jan 2014 - Mar 2019</span>
+                </div>
+                <ul class="achievements-list">
+                    <li><strong>Ad Quality & Inventory Protection:</strong> Worked on development and testing of the Real-Time Ad Scanning project within the Ad-Quality team, which used in-house solutions to proactively block malicious and unwanted ads, ensuring a clean and safe inventory for publishers.</li>
+                </ul>
+            </div>
+
+            <!-- Education -->
+             <h4 class="section-title" style="font-size: 1.5rem; margin: 40px 0 30px 0;"><span><i class="fa-solid fa-graduation-cap"></i></span>Education</h4>
+             
+             <div class="job-card" style="padding: 20px;">
+                <div class="job-header">
+                    <div class="company-name">Savitribai Phule Pune University</div>
+                </div>
+                <div class="role-title" style="font-size: 1rem;">Master’s Degree, Computer Science</div>
+                <div class="job-meta">
+                    <span><i class="fa-regular fa-calendar"></i> 2012 - 2015</span>
+                </div>
+             </div>
+
+             <div class="job-card" style="padding: 20px;">
+                <div class="job-header">
+                    <div class="company-name">Solapur University</div>
+                </div>
+                <div class="role-title" style="font-size: 1rem;">Bachelor of Computer Application, Computer Science</div>
+             </div>
+
+        </div>
+    </section>
+
     <!-- Projects Section -->
     <section id="projects">
-        <h3 class="section-title"><span>02.</span>Key Projects & POCs</h3>
+        <h3 class="section-title"><span>03.</span>Key Projects & POCs</h3>
         <div class="projects-grid">
 
             <div class="project-card">
@@ -597,18 +798,20 @@
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
-        <h3 class="section-title" style="justify-content: center; margin-left: 0;"><span>03.</span>What's Next?</h3>
-        <h1 style="font-size: 3rem;">Get In Touch</h1>
-        <p style="margin: 20px 0; font-size: 1.1rem; color: var(--secondary);">
-            I'm currently eager to connect with like-minded professionals, share experiences, and explore new opportunities. 
-            Whether you have a question or just want to say hi, I'll try my best to get back to you!
-        </p>
-        <a href="mailto:satish.mashale@example.com" class="btn">Say Hello</a>
+        <h3 class="section-title"><span>04.</span>What's Next?</h3>
+        <div class="contact-content">
+            <h1 style="font-size: 3rem;">Get In Touch</h1>
+            <p style="margin: 20px 0; font-size: 1.1rem; color: var(--secondary);">
+                I'm currently eager to connect with like-minded professionals, share experiences, and explore new opportunities. 
+                Whether you have a question or just want to say hi, I'll try my best to get back to you!
+            </p>
+            <a href="mailto:satish.mashale@gmail.com" class="btn">Say Hello</a>
 
-        <div class="social-links">
-            <a href="https://github.com/satish-mashale" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
-            <a href="https://linkedin.com" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="#" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+            <div class="social-links">
+                <a href="https://github.com/satish-mashale" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="https://linkedin.com" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+            </div>
         </div>
     </section>
 
